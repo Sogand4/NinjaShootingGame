@@ -5,15 +5,15 @@ import java.awt.*;
 // Represents a ninja
 public class Ninja extends Sprite {
 
-    public static final int X_POS = 5;
+    public static final int X_POS = NSG.GAME_WIDTH / 5;
     private static final int NINJA_WIDTH = 5;
     private static final int NINJA_HEIGHT = 5;
     public static final int DY = 1;
     private static final Color COLOR = new Color(148, 239, 206);
 
-    private boolean direction;           // direction of ninja (true is down, false is up)
+    private boolean direction;           // direction of ninja (true is up, false is down)
 
-    // EFFECTS: Constructs a ninja at position (X_POS, y) moving in an upwards direction
+    // EFFECTS: constructs a ninja at position (X_POS, y) facing a downwards direction
     public Ninja(int y) {
         super(X_POS, y, NINJA_WIDTH, NINJA_HEIGHT);
         direction = false;

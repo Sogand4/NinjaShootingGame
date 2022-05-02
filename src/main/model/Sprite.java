@@ -10,7 +10,7 @@ public abstract class Sprite {
     protected int width;
     protected int height;
 
-    // EFFECTS: Constructs a Sprite with a width, height, and position (x, y)
+    // EFFECTS: constructs a Sprite with a width, height, and position (x, y)
     public Sprite(int x, int y, int width, int height) {
         this.x = x;
         this.y = y;

@@ -12,7 +12,7 @@ public class ThrowingStar extends Sprite {
     public static final int DX = 2;
     private static final Color COLOR = new Color(192, 192, 192);
 
-    // EFFECTS: Constructs a throwing star at position (x, y)
+    // EFFECTS: constructs a throwing star at position (x, y)
     public ThrowingStar(int x, int y) {
         super(x, y, THROWING_STAR_WIDTH, THROWING_STAR_HEIGHT);
     }

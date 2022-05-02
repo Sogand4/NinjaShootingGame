@@ -22,10 +22,10 @@ public class Target extends Sprite {
     private boolean flipDirection;  // Direction of movement for path 3 - true means target goes down when
                                     // it reaches the middle
 
-    // EFFECTS: Constructs a Target with a radius and type, at a position (X_MID, TOP), with horizontal and vertical
+    // EFFECTS: constructs a Target with a radius and type, at a position (X_MID, TOP), with horizontal and vertical
     //          speeds of 2, and facing down
-    public Target(int radius, int type) {
-        super(X_MID, TOP, 2 * radius, 2 * radius);
+    public Target(int type) {
+        super(X_MID, TOP, 2 * RADIUS, 2 * RADIUS);
         this.type = type;
         dx = 2;
         dy = 2;

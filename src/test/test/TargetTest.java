@@ -9,21 +9,18 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class TargetTest {
 
-    private static final int RADIUS_EASY = 5;
-    private static final int RADIUS_MEDIUM = 4;
-    private static final int RADIUS_HARD = 3;
     private Target easyTarget;
 
     @BeforeEach
     public void runBefore() {
-        easyTarget = new Target(RADIUS_EASY, 1);
+        easyTarget = new Target(1);
     }
 
     @Test
     public void testConstructor() {
         assertEquals(1, easyTarget.getType());
-        assertEquals(2 * RADIUS_EASY, easyTarget.getHeight());
-        assertEquals(2 * RADIUS_EASY, easyTarget.getWidth());
+        assertEquals(2 * Target.RADIUS, easyTarget.getHeight());
+        assertEquals(2 * Target.RADIUS, easyTarget.getWidth());
         assertEquals(2, easyTarget.getDx());
         assertEquals(2, easyTarget.getDy());
         assertEquals(Target.LEFT_EDGE + (Target.RIGHT_EDGE - Target.LEFT_EDGE) / 2,
@@ -71,7 +68,7 @@ public class TargetTest {
 
     @Test
     public void testUpdateMediumTarget() {
-        Target mediumTarget = new Target(RADIUS_MEDIUM, 2);
+        Target mediumTarget = new Target(2);
 
         while (mediumTarget.getX() < Target.RIGHT_EDGE) {
             mediumTarget.move();
@@ -113,7 +110,7 @@ public class TargetTest {
 
     @Test
     public void testUpdateHardTarget() {
-        Target hardTarget = new Target(RADIUS_HARD, 3);
+        Target hardTarget = new Target(3);
 
         while (hardTarget.getX() < Target.RIGHT_EDGE) {
             hardTarget.move();
