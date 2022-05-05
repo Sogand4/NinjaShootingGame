@@ -5,7 +5,7 @@ import java.awt.*;
 // Represents a target
 public class Target extends Sprite {
 
-    public static final int RADIUS = 1;
+    public static final int RADIUS = 4;
     public static final int TOP = NSG.GAME_HEIGHT / 6;
     public static final int BOTTOM = NSG.GAME_HEIGHT - NSG.GAME_HEIGHT / 6;
     public static final int RIGHT_EDGE = NSG.GAME_WIDTH - NSG.GAME_WIDTH / 6;

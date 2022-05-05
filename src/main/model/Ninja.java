@@ -6,8 +6,8 @@ import java.awt.*;
 public class Ninja extends Sprite {
 
     public static final int X_POS = NSG.GAME_WIDTH / 5;
-    private static final int NINJA_WIDTH = 5;
-    private static final int NINJA_HEIGHT = 5;
+    private static final int NINJA_WIDTH = 80;
+    private static final int NINJA_HEIGHT = 50;
     public static final int DY = 1;
     private static final Color COLOR = new Color(148, 239, 206);
 

@@ -20,6 +20,7 @@ public class NSG {
     private int numThrowingStarsUsed;
     private int difficulty;
     private boolean gameOver;
+    private boolean hit;
 
     // REQUIRES: difficulty is an integer from [1,3]
     // EFFECTS: constructs a ninja shooting game with the given difficulty, 2 sprites (ninja and target), gameOver set
@@ -31,6 +32,7 @@ public class NSG {
         this.difficulty = difficulty;
         target = new Target(difficulty);
         gameOver = false;
+        hit = false;
 
         sprites.add(ninja);
         sprites.add(target);
@@ -56,11 +58,11 @@ public class NSG {
     // EFFECTS: changes the direction of the ninja, throws a star, and exits the game based on player keyboard input
     public void keyPressed(int keyCode) {
         if (keyCode == KeyEvent.VK_UP) {
-            if (ninja.getDirection()) {
+            if (!ninja.getDirection()) {
                 ninja.changeDirection();
             }
         } else if (keyCode == KeyEvent.VK_DOWN) {
-            if (!ninja.getDirection()) {
+            if (ninja.getDirection()) {
                 ninja.changeDirection();
             }
         } else if (keyCode == KeyEvent.VK_SPACE) {
@@ -117,10 +119,20 @@ public class NSG {
                 if (!(s instanceof Target)) {
                     if (target.hit((ThrowingStar) s)) {
                         gameOver = true;
+                        hit = true;
                         sprites.clear();
                     }
                 }
             }
+        }
+    }
+
+    // EFFECTS: return the maximum number of throwing stars for this game, based on difficulty
+    public int getMaxThrowingStars() {
+        if (difficulty == 3) {
+            return MAX_THROWING_STARS_HARD;
+        } else {
+            return MAX_THROWING_STARS_EASY;
         }
     }
 
@@ -147,5 +159,9 @@ public class NSG {
 
     public boolean isGameOver() {
         return gameOver;
+    }
+
+    public boolean getHit() {
+        return hit;
     }
 }
