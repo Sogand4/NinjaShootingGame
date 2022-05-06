@@ -22,7 +22,7 @@ public class NSGTest {
     @Test
     public void testConstructor() {
         assertEquals(1, gameEasy.getDifficulty());
-        assertFalse(gameEasy.isGameOver());
+        assertFalse(gameEasy.getGameOver());
         assertEquals(2, gameEasy.getSprites().size());
         assertEquals(NSG.GAME_HEIGHT / 2, gameEasy.getNinja().getY());
     }

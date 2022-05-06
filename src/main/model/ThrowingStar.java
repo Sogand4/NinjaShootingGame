@@ -9,7 +9,7 @@ public class ThrowingStar extends Sprite {
     public static final int OUTER_RADIUS = 3;
     public static final int THROWING_STAR_WIDTH = 2 * OUTER_RADIUS;
     public static final int THROWING_STAR_HEIGHT = 2 * OUTER_RADIUS;
-    public static final int DX = 2;
+    public static final int DX = 4;
     private static final Color COLOR = new Color(192, 192, 192);
 
     // EFFECTS: constructs a throwing star at position (x, y)

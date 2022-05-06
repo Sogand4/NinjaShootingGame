@@ -26,7 +26,7 @@ public class GamePanel extends JPanel {
 
         game.draw(g);
 
-        if (game.isGameOver()) {
+        if (game.getGameOver()) {
             displayGameOverText(g);
         }
     }
@@ -38,9 +38,9 @@ public class GamePanel extends JPanel {
         g.setColor(new Color( 0, 0, 0));
 
         if (game.getHit()) {
-            result = GAME_OVER + "\n" + WIN;
+            result = GAME_OVER + " - " + WIN;
         } else {
-            result = GAME_OVER + "\n" + LOSE;
+            result = GAME_OVER + " - " + LOSE;
         }
 
         g.drawString(result, NSG.GAME_WIDTH / 2, NSG.GAME_HEIGHT / 2);

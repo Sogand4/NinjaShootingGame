@@ -9,7 +9,8 @@ public class Ninja extends Sprite {
     private static final int NINJA_WIDTH = 80;
     private static final int NINJA_HEIGHT = 50;
     public static final int DY = 1;
-    private static final Color COLOR = new Color(148, 239, 206);
+    private static final Color HEAD = new Color(148, 239, 206);
+    private static final Color BODY = new Color(101, 159, 143);
 
     private boolean direction;           // direction of ninja (true is up, false is down)
 
@@ -43,11 +44,12 @@ public class Ninja extends Sprite {
     @Override
     public void draw(Graphics g) {
         Color gColor = g.getColor();
-        int xPoints[] = {getX(), getX() + 1, getX() - 1};
-        int yPoints[] = {getY() - 2, getY() + 1, getY() + 1};
+        int xPoints[] = {getX(), getX() + 7, getX() - 7};
+        int yPoints[] = {getY() - 14, getY() + 7, getY() + 7};
 
-        g.setColor(COLOR);
-        g.fillOval(getX() - 1, getY() - 4, 2, 2);
+        g.setColor(HEAD);
+        g.fillOval(getX() - 7, getY() - 28, 14, 14);
+        g.setColor(BODY);
         g.fillPolygon( xPoints, yPoints, 3 );
         g.setColor(gColor);
     }

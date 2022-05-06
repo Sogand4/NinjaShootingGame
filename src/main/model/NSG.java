@@ -109,21 +109,37 @@ public class NSG {
         }
 
         sprites.removeAll(spritesToBeRemoved);
+        isGameOver();
+    }
+
+    private void isGameOver() {
+        if (sprites.size() == 2) {
+            if (difficulty == 1 || difficulty == 2) {
+                if (numThrowingStarsUsed >= MAX_THROWING_STARS_EASY) {
+                    gameOver = true;
+                }
+            } else if (difficulty == 3) {
+                if (numThrowingStarsUsed >= MAX_THROWING_STARS_HARD) {
+                    gameOver = true;
+                }
+            }
+        }
     }
 
     // MODIFIES: this
     // EFFECTS: if a throwing star has hit the target, set gameOver to true and clear the board
     private void checkHit() {
         for (Sprite s : sprites) {
-            if (!(s instanceof Ninja)) {
-                if (!(s instanceof Target)) {
-                    if (target.hit((ThrowingStar) s)) {
-                        gameOver = true;
-                        hit = true;
-                        sprites.clear();
-                    }
+            if (!(s instanceof Ninja) && !(s instanceof Target)) {
+                if (target.hit((ThrowingStar) s)) {
+                    gameOver = true;
+                    hit = true;
                 }
             }
+        }
+
+        if (gameOver == true) {
+            sprites.clear();
         }
     }
 
@@ -157,7 +173,7 @@ public class NSG {
         return difficulty;
     }
 
-    public boolean isGameOver() {
+    public boolean getGameOver() {
         return gameOver;
     }
 

@@ -12,7 +12,7 @@ public class Target extends Sprite {
     public static final int LEFT_EDGE = NSG.GAME_WIDTH / 2 + NSG.GAME_WIDTH / 6;
     private static final Color COLOR1 = new Color(246, 90, 61);
     private static final Color COLOR2 = new Color(255, 255, 255);
-    public static final int Y_MID = (BOTTOM - TOP) / 2;
+    public static final int Y_MID = (BOTTOM - TOP) / 2 + TOP;
     public static final int X_MID = LEFT_EDGE + (RIGHT_EDGE - LEFT_EDGE) / 2;
 
     private int type;               // Type of target chosen (based on the player's choice of difficulty,
@@ -114,9 +114,9 @@ public class Target extends Sprite {
         } else if (y == Y_MID && x == X_MID) {
             dx = 0;
             if (flipDirection) {
-                dy = -1;
-            } else {
                 dy = 1;
+            } else {
+                dy = -1;
             }
             flipDirection = !flipDirection;
         } else if (y == BOTTOM && x == LEFT_EDGE) {
