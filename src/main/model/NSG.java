@@ -8,11 +8,11 @@ import java.util.List;
 // Represents a ninja shooting game
 public class NSG {
 
-    public static final int GAME_WIDTH = 741;
+    public static final int GAME_WIDTH = 600;
     public static final int GAME_HEIGHT = 500;
 
-    public static final int MAX_THROWING_STARS_EASY = 5;
-    public static final int MAX_THROWING_STARS_HARD = 3;
+    public static final int MAX_THROWING_STARS_EASY = 8;
+    public static final int MAX_THROWING_STARS_HARD = 5;
 
     private List<Sprite> sprites;
     private Ninja ninja;
@@ -159,10 +159,6 @@ public class NSG {
 
     public Ninja getNinja() {
         return ninja;
-    }
-
-    public Target getTarget() {
-        return target;
     }
 
     public int getNumThrowingStarsUsed() {

@@ -10,13 +10,14 @@ public class AttemptsLeftPanel extends JPanel {
     private static final String THROWING_STARS_TEXT = "Throwing stars remaining: ";
     private static final int LBL_WIDTH = 200;
     private static final int LBL_HEIGHT = 30;
+    private static final Color BACKGROUND_COLOUR = new Color(250, 238, 238);
     private NSG game;
     private JLabel throwingStarsLabel;
 
     // EFFECTS: constructs a panel displaying the number of throwing stars the player has
     public AttemptsLeftPanel(NSG game) {
         this.game = game;
-        setBackground(new Color(250, 238, 238));
+        setBackground(BACKGROUND_COLOUR);
 
         throwingStarsLabel = new JLabel(THROWING_STARS_TEXT + game.getMaxThrowingStars());
         throwingStarsLabel.setPreferredSize(new Dimension(LBL_WIDTH, LBL_HEIGHT));

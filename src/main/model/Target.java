@@ -14,11 +14,15 @@ public class Target extends Sprite {
     private static final Color COLOR2 = new Color(255, 255, 255);
     public static final int Y_MID = (BOTTOM - TOP) / 2 + TOP;
     public static final int X_MID = LEFT_EDGE + (RIGHT_EDGE - LEFT_EDGE) / 2;
+    private static final int SPEED_EASY = 2;
+    private static final int SPEED_HARD = 3;
 
     private int type;               // Type of target chosen (based on the player's choice of difficulty,
                                     // an integer from [1, 3]
     private int dx;                 // Horizontal velocity of target
     private int dy;                 // Vertical velocity of target
+    private boolean yHitMid;        // Has the target reached Y_MID? (used for path 3)
+    private boolean xHitMid;        // Has the target reached X_MID? (used for path 3)
     private boolean flipDirection;  // Direction of movement for path 3 - true means target goes down when
                                     // it reaches the middle
 
@@ -27,27 +31,17 @@ public class Target extends Sprite {
     public Target(int type) {
         super(X_MID, TOP, 2 * RADIUS, 2 * RADIUS);
         this.type = type;
-        dx = 2;
-        dy = 2;
+        dx = SPEED_EASY;
+        dy = SPEED_EASY;
         flipDirection = true;
+        yHitMid = false;
+        xHitMid = false;
     }
 
     // MODIFIES: this
     // EFFECTS: reverses the vertical direction of the target
     public void changeVerticalDirection() {
         dy *= -1;
-    }
-
-    public int getDx() {
-        return dx;
-    }
-
-    public int getDy() {
-        return dy;
-    }
-
-    public int getType() {
-        return type;
     }
 
     // MODIFIES: this
@@ -68,7 +62,7 @@ public class Target extends Sprite {
                 break;
         }
 
-        super.move();
+        handleBoundary();
     }
 
     // MODIFIES: this
@@ -81,17 +75,17 @@ public class Target extends Sprite {
     // EFFECTS: moves the target following a square path
     public void moveWithPath2() {
         if (y == TOP && x != RIGHT_EDGE) {
-            dx = 2;
+            dx = SPEED_EASY;
             dy = 0;
         } else if (y == BOTTOM && x != LEFT_EDGE) {
-            dx = -2;
+            dx = -SPEED_EASY;
             dy = 0;
         } else if (x == RIGHT_EDGE) {
             dx = 0;
-            dy = 2;
+            dy = SPEED_EASY;
         } else if (x == LEFT_EDGE) {
             dx = 0;
-            dy = -2;
+            dy = -SPEED_EASY;
         }
 
         y += dy;
@@ -104,24 +98,24 @@ public class Target extends Sprite {
     public void moveWithPath3() {
         if (y == TOP && x == RIGHT_EDGE) {
             dx = 0;
-            dy = 1;
+            dy = SPEED_HARD;
         } else if ((y == TOP && x == X_MID) || (y == Y_MID && x == LEFT_EDGE)) {
-            dx = 1;
+            dx = SPEED_HARD;
             dy = 0;
         } else if ((y == Y_MID && x == RIGHT_EDGE) || (y == BOTTOM && x == X_MID)) {
-            dx = -1;
+            dx = -SPEED_HARD;
             dy = 0;
         } else if (y == Y_MID && x == X_MID) {
             dx = 0;
             if (flipDirection) {
-                dy = 1;
+                dy = SPEED_HARD;
             } else {
-                dy = -1;
+                dy = -SPEED_HARD;
             }
             flipDirection = !flipDirection;
         } else if (y == BOTTOM && x == LEFT_EDGE) {
             dx = 0;
-            dy = -1;
+            dy = -SPEED_HARD;
         }
 
         x += dx;
@@ -146,6 +140,24 @@ public class Target extends Sprite {
             x = RIGHT_EDGE;
         } else if (x < LEFT_EDGE) {
             x = LEFT_EDGE;
+        }
+
+        if (type == 3) {
+            if (y > Y_MID && !yHitMid) {
+                y = Y_MID;
+                yHitMid = true;
+            } else if (y < Y_MID && yHitMid) {
+                y = Y_MID;
+                yHitMid = false;
+            }
+
+            if (x > X_MID && xHitMid) {
+                x = X_MID;
+                xHitMid = false;
+            } else if (x < X_MID && !xHitMid) {
+                x = X_MID;
+                xHitMid = true;
+            }
         }
     }
 
@@ -175,5 +187,17 @@ public class Target extends Sprite {
         g.fillOval(getX() - RADIUS, getY() - RADIUS, (2 * RADIUS), (2 * RADIUS));
 
         g.setColor(gColor);
+    }
+
+    public int getDx() {
+        return dx;
+    }
+
+    public int getDy() {
+        return dy;
+    }
+
+    public int getType() {
+        return type;
     }
 }

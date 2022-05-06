@@ -8,7 +8,7 @@ public class Ninja extends Sprite {
     public static final int X_POS = NSG.GAME_WIDTH / 5;
     private static final int NINJA_WIDTH = 80;
     private static final int NINJA_HEIGHT = 50;
-    public static final int DY = 1;
+    public static final int DY = 2;
     private static final Color HEAD = new Color(148, 239, 206);
     private static final Color BODY = new Color(101, 159, 143);
 
@@ -31,10 +31,6 @@ public class Ninja extends Sprite {
         super.move();
     }
 
-    public boolean getDirection() {
-        return direction;
-    }
-
     // MODIFIES: this
     // EFFECTS: reverses the current direction of the ninja
     public void changeDirection() {
@@ -52,5 +48,9 @@ public class Ninja extends Sprite {
         g.setColor(BODY);
         g.fillPolygon( xPoints, yPoints, 3 );
         g.setColor(gColor);
+    }
+
+    public boolean getDirection() {
+        return direction;
     }
 }

@@ -13,6 +13,7 @@ import java.awt.event.KeyEvent;
 public class NinjaShooter extends JFrame {
 
     private static final int INTERVAL = 20;
+
     private NSG game;
     private DifficultyPanel dp;
     private GamePanel gp;

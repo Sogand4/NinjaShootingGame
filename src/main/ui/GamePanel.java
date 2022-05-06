@@ -11,12 +11,14 @@ public class GamePanel extends JPanel {
     private static final String GAME_OVER = "Game Over";
     private static final String WIN = "You win!";
     private static final String LOSE = "You lose!";
+    private static final Color BACKGROUND_COLOUR = new Color(79, 79, 79);
+
     private NSG game;
 
     // EFFECTS: creates a panel with the game's size and background colour
     public GamePanel(NSG game) {
         setPreferredSize(new Dimension(NSG.GAME_WIDTH, NSG.GAME_HEIGHT));
-        setBackground(Color.DARK_GRAY);
+        setBackground(BACKGROUND_COLOUR);
         this.game = game;
     }
 
@@ -43,7 +45,15 @@ public class GamePanel extends JPanel {
             result = GAME_OVER + " - " + LOSE;
         }
 
-        g.drawString(result, NSG.GAME_WIDTH / 2, NSG.GAME_HEIGHT / 2);
+        FontMetrics fm = g.getFontMetrics();
+        drawCentredText(result, g, fm);
         g.setColor(saved);
+    }
+
+    // MODIFIES: g
+    // EFFECTS: draws a centred string (str) onto g
+    private void drawCentredText(String str, Graphics g, FontMetrics fm) {
+        int width = fm.stringWidth(str);
+        g.drawString(str, (NSG.GAME_WIDTH - width) / 2, NSG.GAME_HEIGHT / 2);
     }
 }
