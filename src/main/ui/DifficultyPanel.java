@@ -11,6 +11,7 @@ public class DifficultyPanel extends JFrame {
     private static final String START_TEXT = "Start Game";
     private static final int START_WIDTH = 400;
     private static final int START_HEIGHT = 120;
+
     private JComboBox<Difficulty> difficultySettings;
     private int difficulty;
 
@@ -41,6 +42,7 @@ public class DifficultyPanel extends JFrame {
         return difficulty;
     }
 
+    // Represents the different difficulty settings for the game
     private enum Difficulty {
         EASY, MEDIUM, HARD
     }
@@ -51,16 +53,20 @@ public class DifficultyPanel extends JFrame {
         public void actionPerformed(ActionEvent e) {
             Difficulty diff = (Difficulty)difficultySettings.getSelectedItem();
 
-            switch (diff) {
-                case MEDIUM:
-                    difficulty = 2;
-                    break;
-                case HARD:
-                    difficulty = 3;
-                    break;
-                default:
-                    difficulty = 1;
-                    break;
+            if (diff != null) {
+                switch (diff) {
+                    case MEDIUM:
+                        difficulty = 2;
+                        break;
+                    case HARD:
+                        difficulty = 3;
+                        break;
+                    default:
+                        difficulty = 1;
+                        break;
+                }
+            } else {
+                difficulty = 1;
             }
 
             dispose();

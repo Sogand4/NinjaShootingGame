@@ -5,8 +5,8 @@ import java.awt.*;
 // Represents a throwing star
 public class ThrowingStar extends Sprite {
 
-    private static final int INNER_RADIUS = 1;
-    public static final int OUTER_RADIUS = 3;
+    private static final int INNER_RADIUS = 2;
+    public static final int OUTER_RADIUS = 7;
     public static final int THROWING_STAR_WIDTH = 2 * OUTER_RADIUS;
     public static final int THROWING_STAR_HEIGHT = 2 * OUTER_RADIUS;
     public static final int DX = 4;
@@ -25,14 +25,14 @@ public class ThrowingStar extends Sprite {
 
     @Override
     public void draw(Graphics g) {
-        int xPoints[] = { getX() + OUTER_RADIUS, getX() + INNER_RADIUS, getX(), getX() - INNER_RADIUS,
+        int[] xPoints = { getX() + OUTER_RADIUS, getX() + INNER_RADIUS, getX(), getX() - INNER_RADIUS,
                 getX() - OUTER_RADIUS, getX() - INNER_RADIUS, getX(), getX() + INNER_RADIUS};
-        int yPoints[] = { getY(), getY() + INNER_RADIUS, getY() + OUTER_RADIUS, getY() + INNER_RADIUS,
+        int[] yPoints = { getY(), getY() + INNER_RADIUS, getY() + OUTER_RADIUS, getY() + INNER_RADIUS,
                 getY(), getY() - INNER_RADIUS, getY() - OUTER_RADIUS, getY() - INNER_RADIUS};
 
         Color gColor = g.getColor();
         g.setColor(COLOR);
-        g.fillPolygon( xPoints, yPoints, 8 );
+        g.fillPolygon(xPoints, yPoints, 8);
         g.setColor(gColor);
     }
 }

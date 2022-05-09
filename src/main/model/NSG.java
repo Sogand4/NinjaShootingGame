@@ -112,6 +112,9 @@ public class NSG {
         isGameOver();
     }
 
+    // MODIFIES: this
+    // EFFECTS: sets game over to true if all available throwing stars were used and all missed the target, otherwise
+    //          silently returns
     private void isGameOver() {
         if (sprites.size() == 2) {
             if (difficulty == 1 || difficulty == 2) {
@@ -138,7 +141,7 @@ public class NSG {
             }
         }
 
-        if (gameOver == true) {
+        if (gameOver) {
             sprites.clear();
         }
     }

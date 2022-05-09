@@ -17,10 +17,11 @@ public class Target extends Sprite {
     private static final int SPEED_EASY = 2;
     private static final int SPEED_HARD = 3;
 
-    private int type;               // Type of target chosen (based on the player's choice of difficulty,
-                                    // an integer from [1, 3]
     private int dx;                 // Horizontal velocity of target
     private int dy;                 // Vertical velocity of target
+    private int type;               // Type of target chosen (based on the player's choice of difficulty,
+                                    // an integer from [1, 3]
+
     private boolean yHitMid;        // Has the target reached Y_MID? (used for path 3)
     private boolean xHitMid;        // Has the target reached X_MID? (used for path 3)
     private boolean flipDirection;  // Direction of movement for path 3 - true means target goes down when

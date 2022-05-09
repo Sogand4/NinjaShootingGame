@@ -7,10 +7,12 @@ import java.awt.*;
 
 // Panel that displays how many throwing stars the player has left
 public class AttemptsLeftPanel extends JPanel {
+
     private static final String THROWING_STARS_TEXT = "Throwing stars remaining: ";
     private static final int LBL_WIDTH = 200;
     private static final int LBL_HEIGHT = 30;
     private static final Color BACKGROUND_COLOUR = new Color(250, 238, 238);
+
     private NSG game;
     private JLabel throwingStarsLabel;
 
